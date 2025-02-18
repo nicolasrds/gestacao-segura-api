@@ -5,6 +5,7 @@ import com.gestacao.segura.dtos.GestanteResponseDTO;
 import com.gestacao.segura.entities.Gestante;
 import com.gestacao.segura.mappers.GestanteMapper;
 import com.gestacao.segura.repositories.GestanteRepository;
+import com.gestacao.segura.repositories.GestanteRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
