@@ -1,8 +1,8 @@
-package com.gestacao.segura.mappers;
+package com.gestacao.segura.mapper;
 
-import com.gestacao.segura.dtos.MedicoRequestDTO;
-import com.gestacao.segura.dtos.MedicoResponseDTO;
-import com.gestacao.segura.entities.Medico;
+import com.gestacao.segura.dto.MedicoRequestDTO;
+import com.gestacao.segura.dto.MedicoResponseDTO;
+import com.gestacao.segura.entity.Medico;
 import org.springframework.stereotype.Component;
 
 @Component

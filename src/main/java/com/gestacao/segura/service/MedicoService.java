@@ -1,10 +1,10 @@
-package com.gestacao.segura.services;
+package com.gestacao.segura.service;
 
-import com.gestacao.segura.dtos.MedicoRequestDTO;
-import com.gestacao.segura.dtos.MedicoResponseDTO;
-import com.gestacao.segura.entities.Medico;
-import com.gestacao.segura.mappers.MedicoMapper;
-import com.gestacao.segura.repositories.MedicoRepository;
+import com.gestacao.segura.dto.MedicoRequestDTO;
+import com.gestacao.segura.dto.MedicoResponseDTO;
+import com.gestacao.segura.entity.Medico;
+import com.gestacao.segura.mapper.MedicoMapper;
+import com.gestacao.segura.repository.MedicoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

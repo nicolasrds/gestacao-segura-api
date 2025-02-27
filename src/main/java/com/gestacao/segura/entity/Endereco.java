@@ -1,4 +1,4 @@
-package com.gestacao.segura.entities;
+package com.gestacao.segura.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

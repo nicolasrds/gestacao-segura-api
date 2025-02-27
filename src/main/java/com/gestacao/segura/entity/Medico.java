@@ -1,6 +1,6 @@
-package com.gestacao.segura.entities;
+package com.gestacao.segura.entity;
 
-import com.gestacao.segura.dtos.MedicoRequestDTO;
+import com.gestacao.segura.dto.MedicoRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

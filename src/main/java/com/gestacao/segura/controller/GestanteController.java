@@ -1,8 +1,8 @@
-package com.gestacao.segura.controllers;
+package com.gestacao.segura.controller;
 
-import com.gestacao.segura.dtos.GestanteRequestDTO;
-import com.gestacao.segura.dtos.GestanteResponseDTO;
-import com.gestacao.segura.services.GestanteService;
+import com.gestacao.segura.dto.GestanteRequestDTO;
+import com.gestacao.segura.dto.GestanteResponseDTO;
+import com.gestacao.segura.service.GestanteService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
-@RequestMapping("/gestante")
+@RequestMapping("/v1/gestante")
 @RestController
 public class GestanteController {
 

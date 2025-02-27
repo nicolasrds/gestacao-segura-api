@@ -1,6 +1,6 @@
-package com.gestacao.segura.dtos;
+package com.gestacao.segura.dto;
 
-import com.gestacao.segura.entities.Endereco;
+import com.gestacao.segura.entity.Endereco;
 
 import java.time.LocalDate;
 

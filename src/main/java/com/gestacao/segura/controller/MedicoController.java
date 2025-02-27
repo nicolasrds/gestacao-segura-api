@@ -1,8 +1,8 @@
-package com.gestacao.segura.controllers;
+package com.gestacao.segura.controller;
 
-import com.gestacao.segura.dtos.MedicoRequestDTO;
-import com.gestacao.segura.dtos.MedicoResponseDTO;
-import com.gestacao.segura.services.MedicoService;
+import com.gestacao.segura.dto.MedicoRequestDTO;
+import com.gestacao.segura.dto.MedicoResponseDTO;
+import com.gestacao.segura.service.MedicoService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
-@RequestMapping("/medico")
+@RequestMapping("/v1/medico")
 @RestController
 public class MedicoController {
 

@@ -1,8 +1,8 @@
-package com.gestacao.segura.mappers;
+package com.gestacao.segura.mapper;
 
-import com.gestacao.segura.dtos.GestanteRequestDTO;
-import com.gestacao.segura.dtos.GestanteResponseDTO;
-import com.gestacao.segura.entities.Gestante;
+import com.gestacao.segura.dto.GestanteRequestDTO;
+import com.gestacao.segura.dto.GestanteResponseDTO;
+import com.gestacao.segura.entity.Gestante;
 import org.springframework.stereotype.Component;
 
 @Component
