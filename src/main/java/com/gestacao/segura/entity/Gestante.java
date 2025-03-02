@@ -49,6 +49,10 @@ public class Gestante {
     @Column(nullable = false, length = 3)
     private String fatorRh;
 
+    public Gestante(Long id) {
+        this.id = id;
+    }
+
     public void update(GestanteRequestDTO dto) {
         this.cpf = dto.cpf();
         this.nomeGestante = dto.nomeGestante();

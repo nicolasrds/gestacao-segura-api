@@ -22,7 +22,7 @@ public class PreNatal {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "gestante_id", nullable = false)
-    private com.gestacao.segura.entities.Gestante gestante;
+    private Gestante gestante;
     @Column(nullable = false)
     private Integer numeroGestacao;
     @Column()

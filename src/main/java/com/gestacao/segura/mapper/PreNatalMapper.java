@@ -3,6 +3,7 @@ package com.gestacao.segura.mapper;
 import com.gestacao.segura.dto.PreNatalRequestDTO;
 import com.gestacao.segura.dto.PreNatalResponseDTO;
 import com.gestacao.segura.entity.PreNatal;
+import com.gestacao.segura.repository.GestanteRepository;
 import org.springframework.stereotype.Component;
 
 @Component
