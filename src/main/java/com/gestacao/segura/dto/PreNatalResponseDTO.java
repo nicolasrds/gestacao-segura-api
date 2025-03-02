@@ -1,4 +1,4 @@
-package com.gestacao.segura.dtos;
+package com.gestacao.segura.dto;
 
 import java.time.LocalDate;
 

@@ -1,8 +1,8 @@
-package com.gestacao.segura.controllers;
+package com.gestacao.segura.controller;
 
-import com.gestacao.segura.dtos.PreNatalRequestDTO;
-import com.gestacao.segura.dtos.PreNatalResponseDTO;
-import com.gestacao.segura.services.PreNatalService;
+import com.gestacao.segura.dto.PreNatalRequestDTO;
+import com.gestacao.segura.dto.PreNatalResponseDTO;
+import com.gestacao.segura.service.PreNatalService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

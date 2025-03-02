@@ -1,10 +1,10 @@
-package com.gestacao.segura.services;
+package com.gestacao.segura.service;
 
-import com.gestacao.segura.dtos.PreNatalRequestDTO;
-import com.gestacao.segura.dtos.PreNatalResponseDTO;
-import com.gestacao.segura.entities.PreNatal;
-import com.gestacao.segura.mappers.PreNatalMapper;
-import com.gestacao.segura.repositories.PreNatalRepository;
+import com.gestacao.segura.dto.PreNatalRequestDTO;
+import com.gestacao.segura.dto.PreNatalResponseDTO;
+import com.gestacao.segura.entity.PreNatal;
+import com.gestacao.segura.mapper.PreNatalMapper;
+import com.gestacao.segura.repository.PreNatalRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,6 +1,6 @@
-package com.gestacao.segura.entities;
+package com.gestacao.segura.entity;
 
-import com.gestacao.segura.dtos.PreNatalRequestDTO;
+import com.gestacao.segura.dto.PreNatalRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,7 +22,7 @@ public class PreNatal {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "gestante_id", nullable = false)
-    private Gestante gestante;
+    private com.gestacao.segura.entities.Gestante gestante;
     @Column(nullable = false)
     private Integer numeroGestacao;
     @Column()

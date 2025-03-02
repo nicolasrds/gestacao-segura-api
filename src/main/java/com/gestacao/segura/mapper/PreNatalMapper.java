@@ -1,10 +1,8 @@
-package com.gestacao.segura.mappers;
+package com.gestacao.segura.mapper;
 
-import com.gestacao.segura.dtos.PreNatalRequestDTO;
-import com.gestacao.segura.dtos.PreNatalResponseDTO;
-import com.gestacao.segura.entities.PreNatal;
-import com.gestacao.segura.repositories.GestanteRepository;
-import com.gestacao.segura.repositories.PreNatalRepository;
+import com.gestacao.segura.dto.PreNatalRequestDTO;
+import com.gestacao.segura.dto.PreNatalResponseDTO;
+import com.gestacao.segura.entity.PreNatal;
 import org.springframework.stereotype.Component;
 
 @Component
