@@ -13,7 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
-@RequestMapping("/pre-natal")
+@RequestMapping("/v1/pre-natal")
 @RestController
 public class PreNatalController {
 
