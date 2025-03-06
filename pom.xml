@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.drj.tm</groupId>
     <artifactId>gestacao-segura</artifactId>
@@ -69,7 +69,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
         <!-- SpringBoot Starter test -->
         <dependency>
@@ -81,10 +80,16 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
-            <version>4.0.0</version> <!-- Escolha a versão adequada -->
+            <version>4.0.0</version>
             <scope>test</scope>
         </dependency>
-</dependencies>
+        <!-- Swagger -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+    </dependencies>
 <build>
 <plugins>
     <plugin>
@@ -107,11 +112,11 @@
                 <exclude>
                     <groupId>org.projectlombok</groupId>
                     <artifactId>lombok</artifactId>
-                    <version>1.18.30</version>
                 </exclude>
             </excludes>
         </configuration>
     </plugin>
+
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>

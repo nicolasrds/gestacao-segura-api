@@ -15,34 +15,37 @@ public class MedicoService {
 
     private final MedicoRepository medicoRepository;
 
-    public MedicoService(MedicoRepository medicoRepository) {
+    private final MedicoMapper medicoMapper;
+
+    public MedicoService(MedicoRepository medicoRepository, MedicoMapper medicoMapper) {
         this.medicoRepository = medicoRepository;
+        this.medicoMapper = medicoMapper;
     }
 
     public Page<MedicoResponseDTO> findAll(Pageable pageable){
         Page<Medico> medicos = medicoRepository.findAll(pageable);
 
-        return medicos.map(MedicoMapper::toDto);
+        return medicos.map(medicoMapper::toDto);
     }
 
     public MedicoResponseDTO findById(Long id){
         Medico medico = medicoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não foi possivel encontrar o id"));
 
-        return MedicoMapper.toDto(medico);
+        return medicoMapper.toDto(medico);
     }
 
     public MedicoResponseDTO save(MedicoRequestDTO dto){
-        Medico medico = MedicoMapper.toEntity(dto);
+        Medico medico = medicoMapper.toEntity(dto);
         medico = medicoRepository.save(medico);
 
-        return MedicoMapper.toDto(medico);
+        return medicoMapper.toDto(medico);
     }
 
     public MedicoResponseDTO update(Long id, MedicoRequestDTO dto){
         Medico medico = medicoRepository.getReferenceById(id);
         medico.update(dto);
 
-        return MedicoMapper.toDto(medico);
+        return medicoMapper.toDto(medico);
     }
 
     public void delete(Long id) {

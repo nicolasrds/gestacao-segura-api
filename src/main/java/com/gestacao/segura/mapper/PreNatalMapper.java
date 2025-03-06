@@ -10,9 +10,11 @@ import org.springframework.stereotype.Component;
 public class PreNatalMapper {
 
     private final GestanteRepository gestanteRepository;
+    private final GestanteMapper gestanteMapper;
 
-    public PreNatalMapper(GestanteRepository gestanteRepository) {
+    public PreNatalMapper(GestanteRepository gestanteRepository, GestanteMapper gestanteMapper) {
         this.gestanteRepository = gestanteRepository;
+        this.gestanteMapper = gestanteMapper;
     }
 
     public PreNatal toEntity(PreNatalRequestDTO dto) {
@@ -29,7 +31,7 @@ public class PreNatalMapper {
     public PreNatalResponseDTO toDto(PreNatal preNatal) {
         return new PreNatalResponseDTO(
                 preNatal.getId(),
-                GestanteMapper.toDto(preNatal.getGestante()),
+                gestanteMapper.toDto(preNatal.getGestante()),
                 preNatal.getNumeroGestacao(),
                 preNatal.getDataUltimaMenstruacao(),
                 preNatal.getDataProvavelParto(),
