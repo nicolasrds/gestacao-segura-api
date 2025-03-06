@@ -38,7 +38,7 @@ class PreNatalServiceTest {
     }
 
     @Test
-    void testFindAll() {
+    void shouldFindAll() {
         Page<PreNatal> page = new PageImpl<>(List.of(preNatal));
         when(preNatalRepository.findAll(any(Pageable.class))).thenReturn(page);
         when(preNatalMapper.toDto(preNatal)).thenReturn(responseDTO);
@@ -48,7 +48,7 @@ class PreNatalServiceTest {
     }
 
     @Test
-    void testFindById() {
+    void shouldFindById() {
         when(preNatalRepository.findById(1L)).thenReturn(Optional.of(preNatal));
         when(preNatalMapper.toDto(preNatal)).thenReturn(responseDTO);
 
@@ -57,7 +57,7 @@ class PreNatalServiceTest {
     }
 
     @Test
-    void testSave() {
+    void shouldSave() {
         when(preNatalMapper.toEntity(requestDTO)).thenReturn(preNatal);
         when(preNatalRepository.save(preNatal)).thenReturn(preNatal);
         when(preNatalMapper.toDto(preNatal)).thenReturn(responseDTO);
@@ -67,7 +67,7 @@ class PreNatalServiceTest {
     }
 
     @Test
-    void testUpdate() {
+    void shouldUpdate() {
         when(preNatalRepository.findById(1L)).thenReturn(Optional.of(preNatal));
         when(preNatalMapper.toDto(preNatal)).thenReturn(responseDTO);
 
@@ -76,7 +76,7 @@ class PreNatalServiceTest {
     }
 
     @Test
-    void testDelete() {
+    void shouldDelete() {
         when(preNatalRepository.existsById(1L)).thenReturn(true);
         preNatalService.delete(1L);
         verify(preNatalRepository).deleteById(1L);

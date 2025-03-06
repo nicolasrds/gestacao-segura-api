@@ -40,7 +40,7 @@ class GestanteServiceTest {
     }
 
     @Test
-    void testFindAll() {
+    void shouldFindAll() {
         Page<Gestante> page = new PageImpl<>(List.of(gestante));
         when(gestanteRepository.findAll(any(Pageable.class))).thenReturn(page);
         when(gestanteMapper.toDto(gestante)).thenReturn(responseDTO);
@@ -50,7 +50,7 @@ class GestanteServiceTest {
     }
 
     @Test
-    void testFindById() {
+    void shouldFindById() {
         when(gestanteRepository.findById(1L)).thenReturn(Optional.of(gestante));
         when(gestanteMapper.toDto(gestante)).thenReturn(responseDTO);
 
@@ -59,7 +59,7 @@ class GestanteServiceTest {
     }
 
     @Test
-    void testSave() {
+    void shouldSave() {
         when(gestanteMapper.toEntity(requestDTO)).thenReturn(gestante);
         when(gestanteRepository.save(gestante)).thenReturn(gestante);
         when(gestanteMapper.toDto(gestante)).thenReturn(responseDTO);
@@ -69,7 +69,7 @@ class GestanteServiceTest {
     }
 
     @Test
-    void testUpdate() {
+    void shouldUpdate() {
         when(gestanteRepository.getReferenceById(1L)).thenReturn(gestante);
         when(gestanteMapper.toDto(gestante)).thenReturn(responseDTO);
 
@@ -78,7 +78,7 @@ class GestanteServiceTest {
     }
 
     @Test
-    void testDelete() {
+    void shouldDelete() {
         when(gestanteRepository.existsById(1L)).thenReturn(true);
         gestanteService.delete(1L);
         verify(gestanteRepository).deleteById(1L);

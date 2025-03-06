@@ -38,7 +38,7 @@ class MedicoServiceTest {
     }
 
     @Test
-    void testFindAll() {
+    void shouldFindAll() {
         Page<Medico> page = new PageImpl<>(List.of(medico));
         when(medicoRepository.findAll(any(Pageable.class))).thenReturn(page);
         when(medicoMapper.toDto(medico)).thenReturn(responseDTO);
@@ -48,7 +48,7 @@ class MedicoServiceTest {
     }
 
     @Test
-    void testFindById() {
+    void shouldFindById() {
         when(medicoRepository.findById(1L)).thenReturn(Optional.of(medico));
         when(medicoMapper.toDto(medico)).thenReturn(responseDTO);
 
@@ -57,7 +57,7 @@ class MedicoServiceTest {
     }
 
     @Test
-    void testSave() {
+    void shouldSave() {
         when(medicoMapper.toEntity(requestDTO)).thenReturn(medico);
         when(medicoRepository.save(medico)).thenReturn(medico);
         when(medicoMapper.toDto(medico)).thenReturn(responseDTO);
@@ -67,7 +67,7 @@ class MedicoServiceTest {
     }
 
     @Test
-    void testUpdate() {
+    void shouldUpdate() {
         when(medicoRepository.getReferenceById(1L)).thenReturn(medico);
         when(medicoMapper.toDto(medico)).thenReturn(responseDTO);
 
@@ -76,7 +76,7 @@ class MedicoServiceTest {
     }
 
     @Test
-    void testDelete() {
+    void shouldDelete() {
         when(medicoRepository.existsById(1L)).thenReturn(true);
         medicoService.delete(1L);
         verify(medicoRepository).deleteById(1L);
