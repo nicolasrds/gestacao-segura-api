@@ -6,8 +6,7 @@ import java.time.LocalDateTime;
 
 public record ConsultaResponseDTO(
         Long idConsulta,
-        Long idAgendamento,
-        Integer numeroConsulta,
+        PreNatalResponseDTO preNatal,
         LocalDateTime dataConsulta,
         Integer semanasDeAmenorreiaInt,
         Integer semanasDeAmenorreiaFrc,
@@ -17,6 +16,6 @@ public record ConsultaResponseDTO(
         String fcf,
         String movimentosFetais,
         String observacoes,
-        Medico medico,
+        MedicoResponseDTO medico,
         Double imc
 ) {}

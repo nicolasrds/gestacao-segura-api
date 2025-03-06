@@ -3,14 +3,17 @@ package com.gestacao.segura.entity;
 import com.gestacao.segura.dto.GestanteRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "gestantes")
 @Entity
 public class Gestante {
@@ -34,7 +37,7 @@ public class Gestante {
     @Column(length = 15)
     private String telefone;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -43,11 +46,14 @@ public class Gestante {
     @Embedded
     private Endereco endereco;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false)
     private String tipagemSanguinea;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false)
     private String fatorRh;
+
+    @OneToMany(mappedBy = "gestante", fetch = FetchType.LAZY)
+    private List<PreNatal> preNatais;
 
     public Gestante(Long id) {
         this.id = id;

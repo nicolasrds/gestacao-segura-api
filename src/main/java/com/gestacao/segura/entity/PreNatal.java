@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,9 +21,11 @@ public class PreNatal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "gestante_id", nullable = false)
     private Gestante gestante;
+
     @Column(nullable = false)
     private Integer numeroGestacao;
     @Column()
@@ -33,6 +36,9 @@ public class PreNatal {
     private Double pesoInicioGestacao;
     @Column()
     private Double alturaGestante;
+
+    @OneToMany(mappedBy = "preNatal", fetch = FetchType.LAZY)
+    private List<Consulta> consultas;
 
     public PreNatal(Long id) {
         this.id = id;

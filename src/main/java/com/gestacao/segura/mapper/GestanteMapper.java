@@ -7,22 +7,23 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GestanteMapper {
-    public static Gestante toEntity(GestanteRequestDTO dto) {
-        Gestante gestante = new Gestante();
-        gestante.setCpf(dto.cpf());
-        gestante.setNomeGestante(dto.nomeGestante());
-        gestante.setDataNascimento(dto.dataNascimento());
-        gestante.setSenha(dto.senha());
-        gestante.setTelefone(dto.telefone());
-        gestante.setEmail(dto.email());
-        gestante.setEndereco(dto.endereco());
-        gestante.setTipagemSanguinea(dto.tipagemSanguinea());
-        gestante.setFatorRh(dto.fatorRh());
-        gestante.setNumeroCartaoSus(dto.numeroCartaoSus());
-        return gestante;
+
+    public Gestante toEntity(GestanteRequestDTO dto) {
+        return Gestante.builder()
+        .cpf(dto.cpf())
+        .nomeGestante(dto.nomeGestante())
+        .dataNascimento(dto.dataNascimento())
+        .senha(dto.senha())
+        .telefone(dto.telefone())
+        .email(dto.email())
+        .endereco(dto.endereco())
+        .tipagemSanguinea(dto.tipagemSanguinea())
+        .fatorRh(dto.fatorRh())
+        .numeroCartaoSus(dto.numeroCartaoSus())
+        .build();
     }
 
-    public static GestanteResponseDTO toDto(Gestante gestante) {
+    public GestanteResponseDTO toDto(Gestante gestante) {
         return new GestanteResponseDTO(
                 gestante.getId(),
                 gestante.getCpf(),

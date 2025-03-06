@@ -1,8 +1,10 @@
 package com.gestacao.segura.entity;
 
+
 import com.gestacao.segura.dto.ConsultaRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Data
 @Entity
 @Table(name = "consultas")
@@ -19,11 +22,9 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idConsulta;
 
-    @Column(nullable = false)
-    private Long idAgendamento;
-
-    @Column(nullable = false)
-    private Integer numeroConsulta;
+    @ManyToOne
+    @JoinColumn(name = "pre_natal_id", nullable = false)
+    private PreNatal preNatal;
 
     @Column(nullable = false)
     private LocalDateTime dataConsulta;
@@ -43,24 +44,23 @@ public class Consulta {
     @Column(nullable = false)
     private Integer alturaUterina;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false)
     private String fcf;
 
-    @Column(nullable = false, length = 2)
+    @Column(nullable = false)
     private String movimentosFetais;
 
     @Column(length = 500)
     private String observacoes;
 
     @ManyToOne
+    @JoinColumn(name = "medico_id", nullable = false)
     private Medico medico;
 
     @Column(nullable = false)
     private Double imc;
 
     public void update(ConsultaRequestDTO dto) {
-        this.idAgendamento = dto.idAgendamento();
-        this.numeroConsulta = dto.numeroConsulta();
         this.dataConsulta = dto.dataConsulta();
         this.semanasDeAmenorreiaInt = dto.semanasDeAmenorreiaInt();
         this.semanasDeAmenorreiaFrc = dto.semanasDeAmenorreiaFrc();
@@ -70,6 +70,5 @@ public class Consulta {
         this.fcf = dto.fcf();
         this.movimentosFetais = dto.movimentosFetais();
         this.observacoes = dto.observacoes();
-        this.medico = dto.medicoId();
     }
 }

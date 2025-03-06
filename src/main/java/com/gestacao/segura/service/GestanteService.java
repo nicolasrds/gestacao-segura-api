@@ -15,34 +15,37 @@ public class GestanteService {
 
     private final GestanteRepository gestanteRepository;
 
-    public GestanteService(GestanteRepository gestanteRepository) {
+    private final GestanteMapper gestanteMapper;
+
+    public GestanteService(GestanteRepository gestanteRepository, GestanteMapper gestanteMapper) {
         this.gestanteRepository = gestanteRepository;
+        this.gestanteMapper = gestanteMapper;
     }
 
     public Page<GestanteResponseDTO> findAll(Pageable pageable){
         Page<Gestante> gestantes = gestanteRepository.findAll(pageable);
 
-        return gestantes.map(GestanteMapper::toDto);
+        return gestantes.map(gestanteMapper::toDto);
     }
 
     public GestanteResponseDTO findById(Long id){
         Gestante gestante = gestanteRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não foi possivel encontrar o id"));
 
-        return GestanteMapper.toDto(gestante);
+        return gestanteMapper.toDto(gestante);
     }
 
     public GestanteResponseDTO save(GestanteRequestDTO dto){
-        Gestante gestante = GestanteMapper.toEntity(dto);
+        Gestante gestante = gestanteMapper.toEntity(dto);
         gestante = gestanteRepository.save(gestante);
 
-        return GestanteMapper.toDto(gestante);
+        return gestanteMapper.toDto(gestante);
     }
 
     public GestanteResponseDTO update(Long id, GestanteRequestDTO dto){
         Gestante gestante = gestanteRepository.getReferenceById(id);
         gestante.update(dto);
 
-        return GestanteMapper.toDto(gestante);
+        return gestanteMapper.toDto(gestante);
     }
 
     public void delete(Long id) {

@@ -14,11 +14,13 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.NoSuchElementException;
 
+@ControllerAdvice
 public class RestExceptionHandler {
 
     private final MessageService messageService;
@@ -100,7 +102,13 @@ public class RestExceptionHandler {
                 ex, messageService.getMessage("noSuchElementExceptionMessage"))));
     }
     @ExceptionHandler(LazyInitializationException.class)
-    public ResponseEntity<Object> handleLazyInitializationExceptionException(LazyInitializationException ex) {
+    public ResponseEntity<Object> handleLazyInitializationException(LazyInitializationException ex) {
+        return ResponseEntity.badRequest().body((new DadosErro(
+                ex, messageService.getMessage("lazyInitializationExceptionMessage"))));
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleException(Exception ex) {
         return ResponseEntity.badRequest().body((new DadosErro(
                 ex, messageService.getMessage("lazyInitializationExceptionMessage"))));
     }

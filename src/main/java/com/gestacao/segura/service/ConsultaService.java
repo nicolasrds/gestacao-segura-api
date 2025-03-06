@@ -10,39 +10,47 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class ConsultaService {
 
     private final ConsultaRepository consultaRepository;
 
-    public ConsultaService(ConsultaRepository consultaRepository) {
+    private final ConsultaMapper consultaMapper;
+
+    public ConsultaService(ConsultaRepository consultaRepository, ConsultaMapper consultaMapper) {
         this.consultaRepository = consultaRepository;
+        this.consultaMapper = consultaMapper;
     }
 
     public Page<ConsultaResponseDTO> findAll(Pageable pageable){
         Page<Consulta> consultas = consultaRepository.findAll(pageable);
 
-        return consultas.map(ConsultaMapper::toDto);
+        return consultas.map(consultaMapper::toDto);
     }
 
     public ConsultaResponseDTO findById(Long id){
         Consulta consulta = consultaRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não foi possivel encontrar o id"));
 
-        return ConsultaMapper.toDto(consulta);
+        return consultaMapper.toDto(consulta);
     }
 
     public ConsultaResponseDTO save(ConsultaRequestDTO dto){
-        Consulta consulta = ConsultaMapper.toEntity(dto);
+        Consulta consulta = consultaMapper.toEntity(dto);
+
+        consulta.setImc(calcularImc(consulta.getPesoGestante(), consulta.getPreNatal().getAlturaGestante()));
+
         consulta = consultaRepository.save(consulta);
 
-        return ConsultaMapper.toDto(consulta);
+        return consultaMapper.toDto(consulta);
     }
 
     public ConsultaResponseDTO update(Long id, ConsultaRequestDTO dto){
         Consulta consulta = consultaRepository.getReferenceById(id);
         consulta.update(dto);
 
-        return ConsultaMapper.toDto(consulta);
+        return consultaMapper.toDto(consulta);
     }
 
     public void delete(Long id) {
@@ -51,5 +59,9 @@ public class ConsultaService {
         } else {
             consultaRepository.deleteById(id);
         }
+    }
+
+    private Double calcularImc(double peso, double altura) {
+        return peso / (altura*altura);
     }
 }
