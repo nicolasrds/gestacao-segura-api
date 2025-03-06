@@ -2,8 +2,10 @@ package com.gestacao.segura.service;
 
 import com.gestacao.segura.dto.PreNatalRequestDTO;
 import com.gestacao.segura.dto.PreNatalResponseDTO;
+import com.gestacao.segura.entity.Gestante;
 import com.gestacao.segura.entity.PreNatal;
 import com.gestacao.segura.mapper.PreNatalMapper;
+import com.gestacao.segura.repository.GestanteRepository;
 import com.gestacao.segura.repository.PreNatalRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
@@ -14,11 +16,14 @@ import org.springframework.stereotype.Service;
 public class PreNatalService {
 
     private final PreNatalRepository preNatalRepository;
+    private final GestanteRepository gestanteRepository;
     private final PreNatalMapper preNatalMapper;
 
     public PreNatalService(PreNatalRepository preNatalRepository,
+                           GestanteRepository gestanteRepository,
                            PreNatalMapper preNatalMapper) {
         this.preNatalRepository = preNatalRepository;
+        this.gestanteRepository = gestanteRepository;
         this.preNatalMapper = preNatalMapper;
     }
 
@@ -43,7 +48,8 @@ public class PreNatalService {
 
     public PreNatalResponseDTO update(Long id, PreNatalRequestDTO dto) {
         PreNatal preNatal = preNatalRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não foi possivel encontrar o id"));
-        preNatal.update(dto);
+        Gestante gestante = gestanteRepository.findById(dto.idGestante()).orElseThrow(() -> new EntityNotFoundException("Não foi possivel encontrar o id"));
+        preNatal.update(dto, gestante);
 
         return preNatalMapper.toDto(preNatal);
     }
