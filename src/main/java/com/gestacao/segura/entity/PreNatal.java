@@ -44,8 +44,8 @@ public class PreNatal {
         this.id = id;
     }
 
-    public void update(PreNatalRequestDTO dto) {
-        this.gestante = new Gestante(dto.idGestante());
+    public void update(PreNatalRequestDTO dto, Gestante gestante) {
+        this.gestante = gestante;
         this.numeroGestacao = dto.numeroGestacao();
         this.dataUltimaMenstruacao = dto.dataUltimaMenstruacao();
         this.dataProvavelParto = dto.dataProvavelParto();
