@@ -3,6 +3,7 @@ package com.gestacao.segura.controller;
 import com.gestacao.segura.dto.ConsultaRequestDTO;
 import com.gestacao.segura.dto.ConsultaResponseDTO;
 import com.gestacao.segura.service.ConsultaService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
